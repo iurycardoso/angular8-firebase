@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
-import { Observable } from 'rxjs'
 import { AngularFireAuth } from '@angular/fire/auth'
 import * as firebase from 'firebase/app'
+import { Observable } from 'rxjs'
 
 
 @Injectable({
@@ -11,9 +11,9 @@ export class AuthenticationService {
 
   private user: Observable<firebase.User>
 
-  constructor(
+  constructor (
     private afAuth: AngularFireAuth
-  ) { 
+  ) {
     this.user = afAuth.authState
   }
 
@@ -43,6 +43,6 @@ export class AuthenticationService {
    * @param email 
    */
   resetPassword(email: string) {
-    this.afAuth.auth.sendPasswordResetEmail(email)
+    return this.afAuth.auth.sendPasswordResetEmail(email)
   }
 }
