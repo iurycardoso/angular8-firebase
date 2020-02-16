@@ -17,6 +17,11 @@ export class AuthenticationService {
     this.user = afAuth.authState
   }
 
+  
+  authUser(): Observable<firebase.User> {
+    return this.user
+  }
+  
   /** 
    * O	método	 	signInWithEmailAndPassword()		 recebe	 os	 dois
    * argumentos	e	retorna	uma	Promise	com	as	credenciais	do	usuário

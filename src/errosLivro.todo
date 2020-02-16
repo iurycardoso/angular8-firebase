@@ -1,0 +1,15 @@
+-> pag. 63: Erro na função | 	this.user	=	this.authServ.authUser(); 
+-> Criar no arquivo authentication.service.ts a função: 
+authUser(): Observable<firebase.User> {
+    return this.user
+  } 
+
+# Até a página 63, não tianha sido solicitada a criação da função;
+
+
+##################################################################################
+
+
+
+
+
