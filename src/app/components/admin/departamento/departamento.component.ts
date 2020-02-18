@@ -1,81 +1,92 @@
-import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
-import { Observable } from 'rxjs'
-import Swal from 'sweetalert2'
-import { Departamento } from './../../../models/departamento.model'
-import { DepartamentoService } from './../../../services/departamento.service'
+import { Component, OnInit } from "@angular/core";
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators
+} from "@angular/forms";
+import { Observable } from "rxjs";
+import Swal from "sweetalert2";
+import { Departamento } from "./../../../models/departamento.model";
+import { DepartamentoService } from "./../../../services/departamento.service";
 
 @Component({
-  selector: 'app-departamento',
-  templateUrl: './departamento.component.html',
-  styleUrls: ['./departamento.component.scss']
+  selector: "app-departamento",
+  templateUrl: "./departamento.component.html",
+  styleUrls: ["./departamento.component.scss"]
 })
 export class DepartamentoComponent implements OnInit {
+  departamentos$: Observable<Departamento[]>;
+  edit: boolean;
+  displayDialogDepartamento: boolean;
+  form: FormGroup;
 
-  departamentos$: Observable<Departamento[]>
-  edit: boolean
-  displayDialogDepartamento: boolean
-  form: FormGroup
-
-  constructor (
+  constructor(
     private departamentoService: DepartamentoService,
     private fb: FormBuilder
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.departamentos$ = this.departamentoService.list()
-    this.configForm()
+    this.departamentos$ = this.departamentoService.list();
+    this.configForm();
   }
 
   configForm() {
     this.form = this.fb.group({
       id: new FormControl(),
-      nome: new FormControl('', Validators.required),
-      telefone: new FormControl('')
-    })
+      nome: new FormControl("", Validators.required),
+      telefone: new FormControl("")
+    });
   }
 
   add() {
-    this.form.reset()
-    this.edit = false
-    this.displayDialogDepartamento = true
+    this.form.reset();
+    this.edit = false;
+    this.displayDialogDepartamento = true;
   }
 
   selecionaDepartamento(depto: Departamento) {
-    this.edit = true
-    this.displayDialogDepartamento = true
-    this.form.setValue(depto)
+    this.edit = true;
+    this.displayDialogDepartamento = true;
+    this.form.setValue(depto);
   }
 
   save() {
-    this.departamentoService.createOrUpdate(this.form.value)
+    this.departamentoService
+      .createOrUpdate(this.form.value)
       .then(() => {
-        this.displayDialogDepartamento = false
-        Swal.fire(`Departamento ${ !this.edit ? 'salvo' : 'atualizado' } com sucesso.`, '', 'success')
+        this.displayDialogDepartamento = false;
+        Swal.fire(
+          `Departamento ${!this.edit ? "salvo" : "atualizado"} com sucesso.`,
+          "",
+          "success"
+        );
       })
-      .catch((erro) => {
-        this.displayDialogDepartamento = false
-        Swal.fire(`Erro ao ${ !this.edit ? 'salvo' : 'atualizado' } o departamento.`, `Detalhes: ${ erro }`, 'error')
-      })
-    this.form.reset()
+      .catch(erro => {
+        this.displayDialogDepartamento = false;
+        Swal.fire(
+          `Erro ao ${!this.edit ? "salvo" : "atualizado"} o departamento.`,
+          `Detalhes: ${erro}`,
+          "error"
+        );
+      });
+    this.form.reset();
   }
 
   delete(depto: Departamento) {
     Swal.fire({
-      title: 'Confirma	a	exclusão	do	departamento?',
+      title: "Confirma	a	exclusão	do	departamento?",
       text: "",
-      type: 'warning',
+      type: "warning",
       showCancelButton: true,
-      confirmButtonText: 'Sim',
-      cancelButtonText: 'Não'
-    }).then((result) => {
+      confirmButtonText: "Sim",
+      cancelButtonText: "Não"
+    }).then(result => {
       if (result.value) {
-        this.departamentoService.delete(depto.id)
-          .then(() => {
-            Swal.fire('Departamento	excluído	com	sucesso!', '', 'success')
-          })
+        this.departamentoService.delete(depto.id).then(() => {
+          Swal.fire("Departamento	excluído	com	sucesso!", "", "success");
+        });
       }
-    })
+    });
   }
-
 }
