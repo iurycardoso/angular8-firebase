@@ -1,0 +1,5 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+.ng-invalid:not(form) {
+  background-color: rgb(235, 185, 185);
+}

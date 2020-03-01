@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { CheckboxModule } from "primeng/checkbox";
 import { ButtonModule } from "primeng/components/button/button";
 import { CalendarModule } from "primeng/components/calendar/calendar";
+import { SharedModule } from "primeng/components/common/shared";
 import { ConfirmDialogModule } from "primeng/components/confirmdialog/confirmdialog";
 import { DataTableModule } from "primeng/components/datatable/datatable";
 import { DialogModule } from "primeng/components/dialog/dialog";
@@ -31,7 +32,8 @@ import { ToggleButtonModule } from "primeng/togglebutton";
     ConfirmDialogModule,
     CalendarModule,
     TabViewModule,
-    ToggleButtonModule
+    ToggleButtonModule,
+    SharedModule
   ],
   exports: [
     ButtonModule,
@@ -47,7 +49,8 @@ import { ToggleButtonModule } from "primeng/togglebutton";
     ConfirmDialogModule,
     CalendarModule,
     TabViewModule,
-    ToggleButtonModule
+    ToggleButtonModule,
+    SharedModule
   ],
   declarations: []
 })
