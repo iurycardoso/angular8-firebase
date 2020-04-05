@@ -1,14 +1,8 @@
-import { Component, OnInit } from "@angular/core";
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators
-} from "@angular/forms";
-import { Observable } from "rxjs";
-import Swal from "sweetalert2";
-import { Departamento } from "./../../../models/departamento.model";
-import { DepartamentoService } from "./../../../services/departamento.service";
+import { Component, OnInit } from "@angular/core"
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms"
+import Swal from "sweetalert2"
+import { Departamento } from "./../../../models/departamento.model"
+import { DepartamentoService } from "./../../../services/departamento.service"
 
 @Component({
   selector: "app-departamento",
@@ -16,19 +10,23 @@ import { DepartamentoService } from "./../../../services/departamento.service";
   styleUrls: ["./departamento.component.scss"]
 })
 export class DepartamentoComponent implements OnInit {
-  departamentos$: Observable<Departamento[]>;
-  edit: boolean;
-  displayDialogDepartamento: boolean;
-  form: FormGroup;
+  departamentos$
+  edit: boolean
+  displayDialogDepartamento: boolean
+  form: FormGroup
 
-  constructor(
+
+  constructor (
     private departamentoService: DepartamentoService,
     private fb: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.departamentos$ = this.departamentoService.list();
-    this.configForm();
+    this.configForm()
+    this.departamentos$ = this.departamentoService.list()
+    this.departamentos$.forEach(function (dep) {
+      console.table(dep)
+    })
   }
 
   configForm() {
@@ -36,41 +34,41 @@ export class DepartamentoComponent implements OnInit {
       id: new FormControl(),
       nome: new FormControl("", Validators.required),
       telefone: new FormControl("")
-    });
+    })
   }
 
   add() {
-    this.form.reset();
-    this.edit = false;
-    this.displayDialogDepartamento = true;
+    this.form.reset()
+    this.edit = false
+    this.displayDialogDepartamento = true
   }
 
   selecionaDepartamento(depto: Departamento) {
-    this.edit = true;
-    this.displayDialogDepartamento = true;
-    this.form.setValue(depto);
+    this.edit = true
+    this.displayDialogDepartamento = true
+    this.form.setValue(depto)
   }
 
   save() {
     this.departamentoService
       .createOrUpdate(this.form.value)
       .then(() => {
-        this.displayDialogDepartamento = false;
+        this.displayDialogDepartamento = false
         Swal.fire(
-          `Departamento ${!this.edit ? "salvo" : "atualizado"} com sucesso.`,
+          `Departamento ${ !this.edit ? "salvo" : "atualizado" } com sucesso.`,
           "",
           "success"
-        );
+        )
       })
       .catch(erro => {
-        this.displayDialogDepartamento = false;
+        this.displayDialogDepartamento = false
         Swal.fire(
-          `Erro ao ${!this.edit ? "salvo" : "atualizado"} o departamento.`,
-          `Detalhes: ${erro}`,
+          `Erro ao ${ !this.edit ? "salvo" : "atualizado" } o departamento.`,
+          `Detalhes: ${ erro }`,
           "error"
-        );
-      });
-    this.form.reset();
+        )
+      })
+    this.form.reset()
   }
 
   delete(depto: Departamento) {
@@ -84,9 +82,9 @@ export class DepartamentoComponent implements OnInit {
     }).then(result => {
       if (result.value) {
         this.departamentoService.delete(depto.id).then(() => {
-          Swal.fire("Departamento	excluído	com	sucesso!", "", "success");
-        });
+          Swal.fire("Departamento	excluído	com	sucesso!", "", "success")
+        })
       }
-    });
+    })
   }
 }
