@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/80b4ff55-190f-48e5-92f7-251306846176/deploy-status)](https://app.netlify.com/sites/requisicoes/deploys)
+
 # RequisicoesApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
