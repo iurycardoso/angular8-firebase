@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core"
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms"
+import { Observable } from 'rxjs'
 import Swal from "sweetalert2"
 import { Departamento } from "./../../../models/departamento.model"
 import { DepartamentoService } from "./../../../services/departamento.service"
@@ -10,30 +11,23 @@ import { DepartamentoService } from "./../../../services/departamento.service"
   styleUrls: ["./departamento.component.scss"]
 })
 export class DepartamentoComponent implements OnInit {
-  departamentos$
+  departamentos$: Observable<Departamento[]>
   edit: boolean
   displayDialogDepartamento: boolean
   form: FormGroup
 
-
-  constructor (
-    private departamentoService: DepartamentoService,
-    private fb: FormBuilder
-  ) { }
+  constructor (private departamentoService: DepartamentoService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.configForm()
     this.departamentos$ = this.departamentoService.list()
-    this.departamentos$.forEach(function (dep) {
-      console.table(dep)
-    })
+    this.configForm()
   }
 
   configForm() {
     this.form = this.fb.group({
       id: new FormControl(),
-      nome: new FormControl("", Validators.required),
-      telefone: new FormControl("")
+      nome: new FormControl('', Validators.required),
+      telefone: new FormControl('')
     })
   }
 
@@ -50,41 +44,34 @@ export class DepartamentoComponent implements OnInit {
   }
 
   save() {
-    this.departamentoService
-      .createOrUpdate(this.form.value)
+    this.departamentoService.createOrUpdate(this.form.value)
       .then(() => {
         this.displayDialogDepartamento = false
-        Swal.fire(
-          `Departamento ${ !this.edit ? "salvo" : "atualizado" } com sucesso.`,
-          "",
-          "success"
-        )
+        Swal.fire(`Departamento ${ !this.edit ? 'salvo' : 'atualizado' } com sucesso.`, '', 'success')
       })
-      .catch(erro => {
+      .catch((erro) => {
         this.displayDialogDepartamento = false
-        Swal.fire(
-          `Erro ao ${ !this.edit ? "salvo" : "atualizado" } o departamento.`,
-          `Detalhes: ${ erro }`,
-          "error"
-        )
+        Swal.fire(`Erro ao ${ !this.edit ? 'salvo' : 'atualizado' } o departamento.`, `Detalhes: ${ erro }`, 'error')
       })
     this.form.reset()
   }
 
   delete(depto: Departamento) {
     Swal.fire({
-      title: "Confirma	a	exclusão	do	departamento?",
+      title: 'Confirma a exclusão do departamento?',
       text: "",
-      type: "warning",
+      type: 'warning',
       showCancelButton: true,
-      confirmButtonText: "Sim",
-      cancelButtonText: "Não"
-    }).then(result => {
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não'
+    }).then((result) => {
       if (result.value) {
-        this.departamentoService.delete(depto.id).then(() => {
-          Swal.fire("Departamento	excluído	com	sucesso!", "", "success")
-        })
+        this.departamentoService.delete(depto.id)
+          .then(() => {
+            Swal.fire('Departamento excluído com sucesso!', '', 'success')
+          })
       }
     })
   }
+
 }
