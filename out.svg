@@ -1,0 +1,266 @@
+<svg version="1.1" baseProfile="full" width="6250.5" height="744" viewbox="0 0 6250.5 744" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font-weight:bold; font-size:12pt; font-family:'Calibri', Helvetica, sans-serif;;stroke-width:3;stroke-linejoin:round;stroke-linecap:round">
+  <title >nomnoml</title>
+  <desc >#.interface: fill=lightblue
+[AppRoutingModule||]
+[AppComponent|+title: string|]
+[AppModule||]
+[&lt;interface&gt;ICrud&lt;T&gt;||+get(): Observable&lt;T&gt;;+list(): Observable&lt;T\[\]&gt;;+createOrUpdate(): Promise&lt;T&gt;;+delete(): Promise&lt;void&gt;]
+[ICrud&lt;T&gt;]&lt;:--[ServiceFirebase&lt;T&gt;]
+[Model|+id: string|+toObject(): object]
+[ServiceFirebase&lt;T&gt;|+ref: AngularFirestoreCollection&lt;T&gt;;#type: new () =&gt; T;#firestone: AngularFirestore;+path: string|+get(): Observable&lt;T&gt;;+list(): Observable&lt;T\[\]&gt;;+createOrUpdate(): Promise&lt;any&gt;;+delete(): Promise&lt;void&gt;;+docToClass(): T]
+[Departamento|+nome: string;+telefone: string|]
+[Model]&lt;:-[Departamento]
+[Funcionario|+nome: string;+funcao: string;+email: string;+ultimoAcesso: Date;+departamento: Departamento|]
+[Model]&lt;:-[Funcionario]
+[Requisicao|+solicitante: Funcionario;+dataAbertura: any;+ultimaAtualizacao: any;+descricao: string;+status: string;+destino: Departamento;+movimentacoes: Movimentacao\[\]|]
+[Movimentacao|+funcionario: Funcionario;+dataHora: Date;+status: string;+descricao: string|]
+[Model]&lt;:-[Requisicao]
+[Model]&lt;:-[Movimentacao]
+[ComumModule||]
+[PrimeNGModule||]
+[FilterDepartamentoPipe||+transform(): any]
+[AuthenticationService|-user: Observable&lt;firebase.User&gt;;-afAuth: AngularFireAuth|+authUser(): Observable&lt;firebase.User&gt;;+login(): Promise&lt;firebase.auth.UserCredential&gt;;+logout(): Promise&lt;void&gt;;+resetPassword(): Promise&lt;void&gt;]
+[AuthguardService|-afAuth: AngularFireAuth;-router: Router|+canActivate(): Observable&lt;boolean&gt;]
+[DepartamentoService||]
+[ServiceFirebase&lt;T&gt;]&lt;:-[DepartamentoService]
+[FuncionarioService||]
+[ServiceFirebase&lt;T&gt;]&lt;:-[FuncionarioService]
+[RequisicaoService||]
+[ServiceFirebase&lt;T&gt;]&lt;:-[RequisicaoService]
+[DepartamentoRoutingModule||]
+[DepartamentoComponent|+departamentos$: Observable&lt;Departamento\[\]&gt;;+edit: boolean;+displayDialogDepartamento: boolean;+form: FormGroup;-departamentoService: DepartamentoService;-fb: FormBuilder|+ngOnInit(): void;+configForm(): void;+add(): void;+selecionaDepartamento(): void;+save(): void;+delete(): void]
+[DepartamentoModule||]
+[FuncionarioRoutingModule||]
+[FuncionarioComponent|+funcionarios$: Observable&lt;Funcionario\[\]&gt;;+departamentos$: Observable&lt;Departamento\[\]&gt;;+departamentoFiltro: string;+edit: boolean;+displayDialogFuncionario: boolean;+form: FormGroup;+inputFile: ElementRef&lt;any&gt;;+uploadPercent: Observable&lt;number&gt;;+downloadURL: Observable&lt;string&gt;;+task: AngularFireUploadTask;+complete: boolean;-storage: AngularFireStorage;-funcionarioService: FuncionarioService;-departamentoService: DepartamentoService;-fb: FormBuilder|+ngOnInit(): void;+configForm(): void;+add(): void;+selecionaFuncionario(): void;+save(): void;+delete(): void;+upload(): Promise&lt;void&gt;]
+[FuncionarioModule||]
+[MenuComponent|+user: Observable&lt;firebase.User&gt;;-authServ: AuthenticationService;-router: Router|+ngOnInit(): void;+sair(): void]
+[PainelRoutingModule||]
+[PainelComponent||+ngOnInit(): void]
+[PainelModule||]
+[LoginComponent|+email: string;+senha: string;+mensagem: string;+emailEnviado: boolean;-authServ: AuthenticationService;-router: Router|+ngOnInit(): void;+logar(): void;+enviaLink(): Promise&lt;void&gt;]</desc>
+  <path d="M707.5 267.5 L707.5 426.5 L707.5 446.5 L707.5 446.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
+  <path d="M712.8 280.8 L707.5 280.8 L702.2 280.8 L707.5 267.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+  <path d="M1244.6 256.5 L1011 426.5 L1011 503 L1011 503 " style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M1237 268.7 L1233.8 264.3 L1230.7 260 L1244.6 256.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+  <path d="M1301.6 256.5 L1276.5 426.5 L1276.5 480.5 L1276.5 480.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M1305 270.5 L1299.7 269.7 L1294.4 268.9 L1301.6 256.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+  <path d="M1372.4 256.5 L1606 426.5 L1606 465.5 L1606 465.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M1386.3 260 L1383.2 264.3 L1380 268.7 L1372.4 256.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+  <path d="M1407 244.5 L1926 426.5 L1926 488 L1926 488 " style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M1421.3 243.9 L1419.6 248.9 L1417.8 254 L1407 244.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+  <path d="M533 635 L475.5 664.5 L475.5 684.5 L475.5 684.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M523.6 645.8 L521.1 641.1 L518.7 636.3 L533 635 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+  <path d="M707.5 644.5 L707.5 664.5 L707.5 684.5 L707.5 684.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M712.8 657.8 L707.5 657.8 L702.2 657.8 L707.5 644.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+  <path d="M882 638.8 L930 664.5 L930 684.5 L930 684.5 " style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M896.3 640.4 L893.8 645.1 L891.2 649.8 L882 638.8 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+  <rect x="13.5" y="186.5" height="47" width="173" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="100" y="208" style="fill: #33322E;text-anchor: middle;">AppRoutingModule</text>
+  <path d="M13.5 217.5 L186.5 217.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M13.5 225.5 L186.5 225.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="226.5" y="175.5" height="70" width="149" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="301" y="197" style="fill: #33322E;text-anchor: middle;">AppComponent</text>
+  <path d="M226.5 206.5 L375.5 206.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="234.5" y="228" style="fill: #33322E;font-weight:normal;">+title: string</text>
+  <path d="M226.5 237.5 L375.5 237.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="415.5" y="186.5" height="47" width="106" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="468.5" y="208" style="fill: #33322E;text-anchor: middle;">AppModule</text>
+  <path d="M415.5 217.5 L521.5 217.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M415.5 225.5 L521.5 225.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="561.5" y="152.5" height="115" width="292" style="stroke:#33322E;fill:lightblue;stroke-dasharray:none;"></rect>
+  <text x="707.5" y="174" style="fill: #33322E;font-weight:normal;text-anchor: middle;">ICrud&lt;T&gt;</text>
+  <path d="M561.5 183.5 L853.5 183.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M561.5 191.5 L853.5 191.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="569.5" y="213" style="fill: #33322E;font-weight:normal;">+get(): Observable&lt;T&gt;</text>
+  <text x="569.5" y="228" style="fill: #33322E;font-weight:normal;">+list(): Observable&lt;T[]&gt;</text>
+  <text x="569.5" y="243" style="fill: #33322E;font-weight:normal;">+createOrUpdate(): Promise&lt;T&gt;</text>
+  <text x="569.5" y="258" style="fill: #33322E;font-weight:normal;">+delete(): Promise&lt;void&gt;</text>
+  <rect x="1210.5" y="163.5" height="93" width="197" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="1309" y="185" style="fill: #33322E;text-anchor: middle;">Model</text>
+  <path d="M1210.5 194.5 L1407.5 194.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="1218.5" y="216" style="fill: #33322E;font-weight:normal;">+id: string</text>
+  <path d="M1210.5 225.5 L1407.5 225.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="1218.5" y="247" style="fill: #33322E;font-weight:normal;">+toObject(): object</text>
+  <rect x="533.5" y="446.5" height="198" width="349" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="708" y="468" style="fill: #33322E;text-anchor: middle;">ServiceFirebase&lt;T&gt;</text>
+  <path d="M533.5 477.5 L882.5 477.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="541.5" y="499" style="fill: #33322E;font-weight:normal;">+ref: AngularFirestoreCollection&lt;T&gt;</text>
+  <text x="541.5" y="514" style="fill: #33322E;font-weight:normal;">#type: new () =&gt; T</text>
+  <text x="541.5" y="529" style="fill: #33322E;font-weight:normal;">#firestone: AngularFirestore</text>
+  <text x="541.5" y="544" style="fill: #33322E;font-weight:normal;">+path: string</text>
+  <path d="M533.5 553.5 L882.5 553.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="541.5" y="575" style="fill: #33322E;font-weight:normal;">+get(): Observable&lt;T&gt;</text>
+  <text x="541.5" y="590" style="fill: #33322E;font-weight:normal;">+list(): Observable&lt;T[]&gt;</text>
+  <text x="541.5" y="605" style="fill: #33322E;font-weight:normal;">+createOrUpdate(): Promise&lt;any&gt;</text>
+  <text x="541.5" y="620" style="fill: #33322E;font-weight:normal;">+delete(): Promise&lt;void&gt;</text>
+  <text x="541.5" y="635" style="fill: #33322E;font-weight:normal;">+docToClass(): T</text>
+  <rect x="922.5" y="503.5" height="85" width="178" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="1011.5" y="525" style="fill: #33322E;text-anchor: middle;">Departamento</text>
+  <path d="M922.5 534.5 L1100.5 534.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="930.5" y="556" style="fill: #33322E;font-weight:normal;">+nome: string</text>
+  <text x="930.5" y="571" style="fill: #33322E;font-weight:normal;">+telefone: string</text>
+  <path d="M922.5 580.5 L1100.5 580.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="1140.5" y="480.5" height="130" width="273" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="1277" y="502" style="fill: #33322E;text-anchor: middle;">Funcionario</text>
+  <path d="M1140.5 511.5 L1413.5 511.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="1148.5" y="533" style="fill: #33322E;font-weight:normal;">+nome: string</text>
+  <text x="1148.5" y="548" style="fill: #33322E;font-weight:normal;">+funcao: string</text>
+  <text x="1148.5" y="563" style="fill: #33322E;font-weight:normal;">+email: string</text>
+  <text x="1148.5" y="578" style="fill: #33322E;font-weight:normal;">+ultimoAcesso: Date</text>
+  <text x="1148.5" y="593" style="fill: #33322E;font-weight:normal;">+departamento: Departamento</text>
+  <path d="M1140.5 602.5 L1413.5 602.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="1453.5" y="465.5" height="160" width="306" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="1606.5" y="487" style="fill: #33322E;text-anchor: middle;">Requisicao</text>
+  <path d="M1453.5 496.5 L1759.5 496.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="1461.5" y="518" style="fill: #33322E;font-weight:normal;">+solicitante: Funcionario</text>
+  <text x="1461.5" y="533" style="fill: #33322E;font-weight:normal;">+dataAbertura: any</text>
+  <text x="1461.5" y="548" style="fill: #33322E;font-weight:normal;">+ultimaAtualizacao: any</text>
+  <text x="1461.5" y="563" style="fill: #33322E;font-weight:normal;">+descricao: string</text>
+  <text x="1461.5" y="578" style="fill: #33322E;font-weight:normal;">+status: string</text>
+  <text x="1461.5" y="593" style="fill: #33322E;font-weight:normal;">+destino: Departamento</text>
+  <text x="1461.5" y="608" style="fill: #33322E;font-weight:normal;">+movimentacoes: Movimentacao[]</text>
+  <path d="M1453.5 617.5 L1759.5 617.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="1799.5" y="488.5" height="115" width="254" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="1926.5" y="510" style="fill: #33322E;text-anchor: middle;">Movimentacao</text>
+  <path d="M1799.5 519.5 L2053.5 519.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="1807.5" y="541" style="fill: #33322E;font-weight:normal;">+funcionario: Funcionario</text>
+  <text x="1807.5" y="556" style="fill: #33322E;font-weight:normal;">+dataHora: Date</text>
+  <text x="1807.5" y="571" style="fill: #33322E;font-weight:normal;">+status: string</text>
+  <text x="1807.5" y="586" style="fill: #33322E;font-weight:normal;">+descricao: string</text>
+  <path d="M1799.5 595.5 L2053.5 595.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="1447.5" y="186.5" height="47" width="125" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="1510" y="208" style="fill: #33322E;text-anchor: middle;">ComumModule</text>
+  <path d="M1447.5 217.5 L1572.5 217.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M1447.5 225.5 L1572.5 225.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="1612.5" y="186.5" height="47" width="144" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="1684.5" y="208" style="fill: #33322E;text-anchor: middle;">PrimeNGModule</text>
+  <path d="M1612.5 217.5 L1756.5 217.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M1612.5 225.5 L1756.5 225.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="1796.5" y="175.5" height="70" width="225" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="1909" y="197" style="fill: #33322E;text-anchor: middle;">FilterDepartamentoPipe</text>
+  <path d="M1796.5 206.5 L2021.5 206.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M1796.5 214.5 L2021.5 214.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="1804.5" y="236" style="fill: #33322E;font-weight:normal;">+transform(): any</text>
+  <rect x="2061.5" y="133.5" height="153" width="463" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="2293" y="155" style="fill: #33322E;text-anchor: middle;">AuthenticationService</text>
+  <path d="M2061.5 164.5 L2524.5 164.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="2069.5" y="186" style="fill: #33322E;font-weight:normal;">-user: Observable&lt;firebase.User&gt;</text>
+  <text x="2069.5" y="201" style="fill: #33322E;font-weight:normal;">-afAuth: AngularFireAuth</text>
+  <path d="M2061.5 210.5 L2524.5 210.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="2069.5" y="232" style="fill: #33322E;font-weight:normal;">+authUser(): Observable&lt;firebase.User&gt;</text>
+  <text x="2069.5" y="247" style="fill: #33322E;font-weight:normal;">+login(): Promise&lt;firebase.auth.UserCredential&gt;</text>
+  <text x="2069.5" y="262" style="fill: #33322E;font-weight:normal;">+logout(): Promise&lt;void&gt;</text>
+  <text x="2069.5" y="277" style="fill: #33322E;font-weight:normal;">+resetPassword(): Promise&lt;void&gt;</text>
+  <rect x="2564.5" y="156.5" height="108" width="349" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="2739" y="178" style="fill: #33322E;text-anchor: middle;">AuthguardService</text>
+  <path d="M2564.5 187.5 L2913.5 187.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="2572.5" y="209" style="fill: #33322E;font-weight:normal;">-afAuth: AngularFireAuth</text>
+  <text x="2572.5" y="224" style="fill: #33322E;font-weight:normal;">-router: Router</text>
+  <path d="M2564.5 233.5 L2913.5 233.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="2572.5" y="255" style="fill: #33322E;font-weight:normal;">+canActivate(): Observable&lt;boolean&gt;</text>
+  <rect x="377.5" y="684.5" height="47" width="197" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="476" y="706" style="fill: #33322E;text-anchor: middle;">DepartamentoService</text>
+  <path d="M377.5 715.5 L574.5 715.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M377.5 723.5 L574.5 723.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="614.5" y="684.5" height="47" width="187" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="708" y="706" style="fill: #33322E;text-anchor: middle;">FuncionarioService</text>
+  <path d="M614.5 715.5 L801.5 715.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M614.5 723.5 L801.5 723.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="841.5" y="684.5" height="47" width="178" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="930.5" y="706" style="fill: #33322E;text-anchor: middle;">RequisicaoService</text>
+  <path d="M841.5 715.5 L1019.5 715.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M841.5 723.5 L1019.5 723.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="2953.5" y="186.5" height="47" width="258" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="3082.5" y="208" style="fill: #33322E;text-anchor: middle;">DepartamentoRoutingModule</text>
+  <path d="M2953.5 217.5 L3211.5 217.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M2953.5 225.5 L3211.5 225.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="3251.5" y="88.5" height="243" width="425" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="3464" y="110" style="fill: #33322E;text-anchor: middle;">DepartamentoComponent</text>
+  <path d="M3251.5 119.5 L3676.5 119.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="3259.5" y="141" style="fill: #33322E;font-weight:normal;">+departamentos$: Observable&lt;Departamento[]&gt;</text>
+  <text x="3259.5" y="156" style="fill: #33322E;font-weight:normal;">+edit: boolean</text>
+  <text x="3259.5" y="171" style="fill: #33322E;font-weight:normal;">+displayDialogDepartamento: boolean</text>
+  <text x="3259.5" y="186" style="fill: #33322E;font-weight:normal;">+form: FormGroup</text>
+  <text x="3259.5" y="201" style="fill: #33322E;font-weight:normal;">-departamentoService: DepartamentoService</text>
+  <text x="3259.5" y="216" style="fill: #33322E;font-weight:normal;">-fb: FormBuilder</text>
+  <path d="M3251.5 225.5 L3676.5 225.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="3259.5" y="247" style="fill: #33322E;font-weight:normal;">+ngOnInit(): void</text>
+  <text x="3259.5" y="262" style="fill: #33322E;font-weight:normal;">+configForm(): void</text>
+  <text x="3259.5" y="277" style="fill: #33322E;font-weight:normal;">+add(): void</text>
+  <text x="3259.5" y="292" style="fill: #33322E;font-weight:normal;">+selecionaDepartamento(): void</text>
+  <text x="3259.5" y="307" style="fill: #33322E;font-weight:normal;">+save(): void</text>
+  <text x="3259.5" y="322" style="fill: #33322E;font-weight:normal;">+delete(): void</text>
+  <rect x="3716.5" y="186.5" height="47" width="192" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="3812.5" y="208" style="fill: #33322E;text-anchor: middle;">DepartamentoModule</text>
+  <path d="M3716.5 217.5 L3908.5 217.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M3716.5 225.5 L3908.5 225.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="3948.5" y="186.5" height="47" width="249" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="4073" y="208" style="fill: #33322E;text-anchor: middle;">FuncionarioRoutingModule</text>
+  <path d="M3948.5 217.5 L4197.5 217.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M3948.5 225.5 L4197.5 225.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="4237.5" y="13.5" height="393" width="425" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="4450" y="35" style="fill: #33322E;text-anchor: middle;">FuncionarioComponent</text>
+  <path d="M4237.5 44.5 L4662.5 44.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="4245.5" y="66" style="fill: #33322E;font-weight:normal;">+funcionarios$: Observable&lt;Funcionario[]&gt;</text>
+  <text x="4245.5" y="81" style="fill: #33322E;font-weight:normal;">+departamentos$: Observable&lt;Departamento[]&gt;</text>
+  <text x="4245.5" y="96" style="fill: #33322E;font-weight:normal;">+departamentoFiltro: string</text>
+  <text x="4245.5" y="111" style="fill: #33322E;font-weight:normal;">+edit: boolean</text>
+  <text x="4245.5" y="126" style="fill: #33322E;font-weight:normal;">+displayDialogFuncionario: boolean</text>
+  <text x="4245.5" y="141" style="fill: #33322E;font-weight:normal;">+form: FormGroup</text>
+  <text x="4245.5" y="156" style="fill: #33322E;font-weight:normal;">+inputFile: ElementRef&lt;any&gt;</text>
+  <text x="4245.5" y="171" style="fill: #33322E;font-weight:normal;">+uploadPercent: Observable&lt;number&gt;</text>
+  <text x="4245.5" y="186" style="fill: #33322E;font-weight:normal;">+downloadURL: Observable&lt;string&gt;</text>
+  <text x="4245.5" y="201" style="fill: #33322E;font-weight:normal;">+task: AngularFireUploadTask</text>
+  <text x="4245.5" y="216" style="fill: #33322E;font-weight:normal;">+complete: boolean</text>
+  <text x="4245.5" y="231" style="fill: #33322E;font-weight:normal;">-storage: AngularFireStorage</text>
+  <text x="4245.5" y="246" style="fill: #33322E;font-weight:normal;">-funcionarioService: FuncionarioService</text>
+  <text x="4245.5" y="261" style="fill: #33322E;font-weight:normal;">-departamentoService: DepartamentoService</text>
+  <text x="4245.5" y="276" style="fill: #33322E;font-weight:normal;">-fb: FormBuilder</text>
+  <path d="M4237.5 285.5 L4662.5 285.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="4245.5" y="307" style="fill: #33322E;font-weight:normal;">+ngOnInit(): void</text>
+  <text x="4245.5" y="322" style="fill: #33322E;font-weight:normal;">+configForm(): void</text>
+  <text x="4245.5" y="337" style="fill: #33322E;font-weight:normal;">+add(): void</text>
+  <text x="4245.5" y="352" style="fill: #33322E;font-weight:normal;">+selecionaFuncionario(): void</text>
+  <text x="4245.5" y="367" style="fill: #33322E;font-weight:normal;">+save(): void</text>
+  <text x="4245.5" y="382" style="fill: #33322E;font-weight:normal;">+delete(): void</text>
+  <text x="4245.5" y="397" style="fill: #33322E;font-weight:normal;">+upload(): Promise&lt;void&gt;</text>
+  <rect x="4702.5" y="186.5" height="47" width="182" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="4793.5" y="208" style="fill: #33322E;text-anchor: middle;">FuncionarioModule</text>
+  <path d="M4702.5 217.5 L4884.5 217.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M4702.5 225.5 L4884.5 225.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="4924.5" y="141.5" height="138" width="320" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="5084.5" y="163" style="fill: #33322E;text-anchor: middle;">MenuComponent</text>
+  <path d="M4924.5 172.5 L5244.5 172.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="4932.5" y="194" style="fill: #33322E;font-weight:normal;">+user: Observable&lt;firebase.User&gt;</text>
+  <text x="4932.5" y="209" style="fill: #33322E;font-weight:normal;">-authServ: AuthenticationService</text>
+  <text x="4932.5" y="224" style="fill: #33322E;font-weight:normal;">-router: Router</text>
+  <path d="M4924.5 233.5 L5244.5 233.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="4932.5" y="255" style="fill: #33322E;font-weight:normal;">+ngOnInit(): void</text>
+  <text x="4932.5" y="270" style="fill: #33322E;font-weight:normal;">+sair(): void</text>
+  <rect x="5284.5" y="186.5" height="47" width="201" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="5385" y="208" style="fill: #33322E;text-anchor: middle;">PainelRoutingModule</text>
+  <path d="M5284.5 217.5 L5485.5 217.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M5284.5 225.5 L5485.5 225.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="5525.5" y="175.5" height="70" width="178" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="5614.5" y="197" style="fill: #33322E;text-anchor: middle;">PainelComponent</text>
+  <path d="M5525.5 206.5 L5703.5 206.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M5525.5 214.5 L5703.5 214.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="5533.5" y="236" style="fill: #33322E;font-weight:normal;">+ngOnInit(): void</text>
+  <rect x="5743.5" y="186.5" height="47" width="135" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="5811" y="208" style="fill: #33322E;text-anchor: middle;">PainelModule</text>
+  <path d="M5743.5 217.5 L5878.5 217.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <path d="M5743.5 225.5 L5878.5 225.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <rect x="5918.5" y="111.5" height="198" width="320" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+  <text x="6078.5" y="133" style="fill: #33322E;text-anchor: middle;">LoginComponent</text>
+  <path d="M5918.5 142.5 L6238.5 142.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="5926.5" y="164" style="fill: #33322E;font-weight:normal;">+email: string</text>
+  <text x="5926.5" y="179" style="fill: #33322E;font-weight:normal;">+senha: string</text>
+  <text x="5926.5" y="194" style="fill: #33322E;font-weight:normal;">+mensagem: string</text>
+  <text x="5926.5" y="209" style="fill: #33322E;font-weight:normal;">+emailEnviado: boolean</text>
+  <text x="5926.5" y="224" style="fill: #33322E;font-weight:normal;">-authServ: AuthenticationService</text>
+  <text x="5926.5" y="239" style="fill: #33322E;font-weight:normal;">-router: Router</text>
+  <path d="M5918.5 248.5 L6238.5 248.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+  <text x="5926.5" y="270" style="fill: #33322E;font-weight:normal;">+ngOnInit(): void</text>
+  <text x="5926.5" y="285" style="fill: #33322E;font-weight:normal;">+logar(): void</text>
+  <text x="5926.5" y="300" style="fill: #33322E;font-weight:normal;">+enviaLink(): Promise&lt;void&gt;</text>
+</svg>
