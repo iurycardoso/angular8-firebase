@@ -33,10 +33,10 @@ export abstract class ServiceFirebase<T extends Model> implements ICrud<T> {
 
     constructor (
         protected type: { new(): T },
-        protected firestone: AngularFirestore,
+        protected firestore: AngularFirestore,
         public path: string
     ) {
-        this.ref = this.firestone.collection<T>(this.path)
+        this.ref = this.firestore.collection<T>(this.path)
     }
 
     /**
