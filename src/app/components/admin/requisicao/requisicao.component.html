@@ -91,11 +91,12 @@
         <div class="ui-grid-col-4">
           <label for="departamento">Destino*:</label>
         </div>
-        <div class="ui-grid-col-8">
+        <div class="ui-grid-col-4 teste">
           <ng-select
             [items]="departamentos$ | async"
             bindLabel="nome"
             formControlName="destino"
+            class="custom"
           >
           </ng-select>
         </div>

@@ -29,7 +29,8 @@
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/nova-light/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
-              "src/assets/icofont/icofont.min.css"
+              "src/assets/icofont/icofont.min.css",
+              "node_modules/ng-select/ng-select/themes/material.theme.css"
             ],
             "scripts": []
           },
