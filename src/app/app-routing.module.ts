@@ -1,7 +1,7 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { LoginComponent } from "./components/public/login/login.component";
-import { AuthguardService } from "./services/authguard.service";
+import { NgModule } from "@angular/core"
+import { RouterModule, Routes } from "@angular/router"
+import { LoginComponent } from "./components/public/login/login.component"
+import { AuthguardService } from "./services/authguard.service"
 
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },
@@ -46,10 +46,12 @@ const routes: Routes = [
       ),
     canActivate: [AuthguardService],
   },
-];
+]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'enabled'
+  })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

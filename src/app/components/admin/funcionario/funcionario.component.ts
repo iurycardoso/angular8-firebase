@@ -48,7 +48,8 @@ export class FuncionarioComponent implements OnInit {
       nome: new FormControl("", Validators.required),
       email: new FormControl("", [Validators.required, Validators.email]),
       funcao: new FormControl(""),
-      departamento: new FormControl("", Validators.required)
+      departamento: new FormControl("", Validators.required),
+      foto: new FormControl()
     })
   }
 
@@ -119,6 +120,6 @@ export class FuncionarioComponent implements OnInit {
       })
     })
     this.uploadPercent = this.task.percentageChanges()
-    this.inputFile.nativeElement.value = ""
+    this.inputFile.nativeElement.value = ''
   }
 }
